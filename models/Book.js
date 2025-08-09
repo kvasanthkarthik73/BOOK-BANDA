@@ -19,9 +19,9 @@ const bookSchema = new mongoose.Schema({
         trim:true,
         maxlength:[4000,'Tile cannot exceed 300 characters']
     },
-    ibsn: {
+    isbn: {
         type:String,
-        required:[true,'IBSN is required'],
+        required:[true,'ISBN is required'],
         unique:true,
         trim:true,
         validate:{
@@ -83,7 +83,7 @@ const bookSchema = new mongoose.Schema({
 },{timestamps:true}
 );
 //Index for searching 
-bookSchema.index({title:'text',author:'text',description:'text'});
+bookSchema.index({title:'text',author:'text',description:'text',genre:'text'});
 //average rating -A virtual is like a calculated property that doesn't exist in the database but is computed on-the-fly.
 bookSchema.virtual('averageRating').get(function(){return this.numberOfRatings>0?(this.rating/this.numberOfRatings).toFixed(1):0;});
 bookSchema.set('toJSON',{virtual:true});

@@ -16,7 +16,7 @@ const userBookSchema = new mongoose.Schema({
     },
     pagesRead:{
         Type:Number,
-        default:0,
+        //default:0,
         min:[0,'Pages Read cannot be negative']
     },
     startDate:{
@@ -53,5 +53,5 @@ userBookSchema.virtual('progressPercentage').get(function(){
 });
 userBookSchema.set('toJSON',{virtual:true});
 userBookSchema.set('toObject',{virtual:true});
-module.exports=mongoose.model('UserBook'.userBookSchema);
+module.exports = mongoose.model('UserBook', userBookSchema);
 
